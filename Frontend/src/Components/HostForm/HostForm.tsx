@@ -70,7 +70,7 @@ const HostForm = (props: Props) => {
     const uploadListing = async (body) => {
         setLoading(true)
         try {
-            const { data } = await axios.post("http://localhost:5000/api/host/listing", body, { headers: { 'Content-Type': "multipart/form-data" } });
+            const { data } = await axios.post("https://fierce-plains-40745.herokuapp.com/api/host/listing", body, { headers: { 'Content-Type': "multipart/form-data" } });
             console.log('I posted!', data);
             const res = await ctx.guestBecomeHost()
             if (res === "Successful") {

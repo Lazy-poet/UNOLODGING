@@ -128,7 +128,7 @@ const AuthContextComp = (props: any) => {
     const fetchRoomsData = async () => {
         setLoading(true)
         try {
-            const res = await axios.get("http://localhost:5000/api/rooms")
+            const res = await axios.get("https://fierce-plains-40745.herokuapp.com/api/rooms")
             const { data } = await res;
             // const newData = [...data]
             setRoomsData(data);
@@ -153,7 +153,7 @@ const AuthContextComp = (props: any) => {
     const fetchUsersData = async () => {
         setLoading(true)
         try {
-            const res = await axios.get("http://localhost:5000/api/allGuests")
+            const res = await axios.get("https://fierce-plains-40745.herokuapp.com/api/allGuests")
             const { data } = await res;
             setAllUsers(data);
             setLoading(false)
@@ -217,7 +217,7 @@ const AuthContextComp = (props: any) => {
         else {
 
             setLoading(true);
-            const res = await axios.post("http://localhost:5000/api/bookings", data);
+            const res = await axios.post("https://fierce-plains-40745.herokuapp.com/api/bookings", data);
             if (res.data.status === "Successful") {
                 await updateRoom({ booked: true }, data.roomId)
             }
@@ -229,7 +229,7 @@ const AuthContextComp = (props: any) => {
 
     const updateRoom = async (body, id) => {
         try {
-            const { data } = await axios.put(`http://localhost:5000/api/updateRoom/${id}`, body);
+            const { data } = await axios.put(`https://fierce-plains-40745.herokuapp.com/api/updateRoom/${id}`, body);
             return data
         }
         catch (e) {
@@ -264,7 +264,7 @@ const AuthContextComp = (props: any) => {
 
     const updateUser = async (id: string, type: string, data) => {
         try {
-            const res = await axios.put(`http://localhost:5000/api/user/${id}?type=${type}`, data);
+            const res = await axios.put(`https://fierce-plains-40745.herokuapp.com/api/user/${id}?type=${type}`, data);
             return res.data
         } catch (e) {
             console.log(e.message)
@@ -365,7 +365,7 @@ const AuthContextComp = (props: any) => {
     const validateLogin = async (body: { email: string; password: string; type: string; }) => {
         setLoading(true)
         try {
-            const { data } = await axios.post("http://localhost:5000/api/login", body, { headers: { 'content-type': "application/json" } })
+            const { data } = await axios.post("https://fierce-plains-40745.herokuapp.com/api/login", body, { headers: { 'content-type': "application/json" } })
             console.log(data)
             return data
         }
@@ -384,7 +384,7 @@ const AuthContextComp = (props: any) => {
     const validateSignup = async (body: { favorites: string[]; type: any; email: string; password: string; firstName: string; lastName: string; phone: string; }) => {
         setLoading(true)
         try {
-            const { data } = await axios.post("http://localhost:5000/api/signup", body, { headers: { 'content-type': "application/json" } })
+            const { data } = await axios.post("https://fierce-plains-40745.herokuapp.com/api/signup", body, { headers: { 'content-type': "application/json" } })
             console.log(data)
             return data
         }

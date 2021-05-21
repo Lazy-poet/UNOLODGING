@@ -54,5 +54,5 @@
     "@types/react-router-dom": "^5.1.7",
     "typings-for-css-modules-loader": "^1.7.0"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "https://fierce-plains-40745.herokuapp.com/"
 }
