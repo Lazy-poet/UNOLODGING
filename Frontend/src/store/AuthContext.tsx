@@ -117,7 +117,7 @@ const AuthContextComp = (props: any) => {
     const [loggedInUserData, setLoggedInUserData] = useState(initialData)
     const [formError, setFormError] = useState("");
     const [favorites, setFavorites] = useState([] as string[]);
-    const [bookings, setBookings] = useState([])
+    // const [bookings, setBookings] = useState([])
 
     useEffect(() => {
         setUserData(initialData);

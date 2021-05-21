@@ -1,9 +1,8 @@
-import React, { useContext, useState, MouseEvent } from "react";
+import React, { useContext } from "react";
 import Modal from "../Modal/Modal";
 import styles from "./Signup.module.css";
 import { Form, Button, Col, Spinner } from "react-bootstrap";
 import AuthContext from "../../store/AuthContext"
-import axios from 'axios';
 
 interface Props {
 
@@ -24,7 +23,7 @@ interface Props {
 
 
 const Signup = (props: Props) => {
-    const [err, setErr] = useState("")
+    // const [err, setErr] = useState("")
     const ctx = useContext(AuthContext);
     let signup;
     signup = ctx.isSignup ? (

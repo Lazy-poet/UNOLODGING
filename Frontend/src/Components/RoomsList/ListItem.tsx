@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Carousel, Button } from "react-bootstrap"
-import img1 from '../../assets/homeBg3.svg'
 import styles from './RoomsList.module.css';
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { RoomData } from '../../store/AuthContext'
