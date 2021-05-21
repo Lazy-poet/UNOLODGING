@@ -2,9 +2,17 @@
   width: 60% !important;
   display: block !important;
   margin: 20px auto !important;
+  border: none !important;
   background-color: #222 !important;
   font-size: 1.1rem !important;
   font-weight: 500 !important;
+  padding: 5px;
+}
+
+.Submit p {
+  margin-bottom: 0 !important;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
 .CTA {
