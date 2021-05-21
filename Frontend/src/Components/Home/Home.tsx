@@ -5,7 +5,6 @@ import bg1 from "../../assets/homeBg1.svg"
 import bg2 from "../../assets/homeBg2.svg"
 import bg3 from "../../assets/homeBg3.svg"
 import img3 from "../../assets/img3.svg"
-import img2 from "../../assets/img2.svg"
 import bg4 from "../../assets/homeBg4.svg"
 import hostBg from "../../assets/hostBg.svg";
 import lagos from "../../assets/lagos.svg";
