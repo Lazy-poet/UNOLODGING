@@ -1,0 +1,68 @@
+.Modal {
+    position: fixed;
+    left: 0;
+    bottom: 100vh;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    z-index: 3000;
+    transition: all .4s ease;
+
+
+
+    .Children {
+        position: absolute;
+        margin-top: 50vh;
+        margin-left: 50vw;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: fit-content;
+        // min-height: 400px;
+        background-color: #fff;
+        padding: 50px;
+        padding-bottom: 20px;
+        border-radius: 15px;
+        z-index: 5000;
+
+        >h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            // text-align: center;
+        }
+
+        >span {
+            position: absolute;
+            font-size: 20px;
+            top: 10px;
+            right: 20px;
+            color: #000;
+
+        }
+
+        >form {
+
+            input,
+            .form-control,
+            select {
+                height: 50px !important
+            }
+
+            .form-row {
+                margin-top: 20px !important
+            }
+        }
+    }
+
+
+}
+
+.Show {
+    bottom: 0;
+}
