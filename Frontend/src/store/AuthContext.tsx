@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, ChangeEvent, MouseEvent } from "react";
 import axios from "axios"
-import { withRouter, Redirect } from "react-router-dom"
+import { withRouter, useHistory } from "react-router-dom"
 const initialData = {
     email: "",
     password: "",
@@ -99,7 +99,7 @@ const AuthContext = React.createContext({
 });
 
 const AuthContextComp = (props: any) => {
-
+    const history = useHistory()
     // const [files, setFiles] = useState<(string | Buffer)[]>([]);
     const [userData, setUserData] = useState(initialData)
     const [allUsers, setAllUsers] = useState([initialData])
@@ -141,7 +141,7 @@ const AuthContextComp = (props: any) => {
     const guestBecomeHost = async () => {
         const res = await updateUser(loggedInUserData.email, "guest", { type: "host" });
         console.log(res, "I became a user")
-        return res.message
+        return res.status
     }
 
     // const fetchBookings = async () => {
@@ -156,13 +156,13 @@ const AuthContextComp = (props: any) => {
             const res = await axios.get("https://fierce-plains-40745.herokuapp.com/api/allGuests")
             const { data } = await res;
             setAllUsers(data);
-            setLoading(false)
             return data;
             // const newData = [...data]
             // setRoomsData(data);
         } catch (e) {
             console.log(e)
         }
+        setLoading(false)
     }
     useEffect(() => {
         // const { data } = await
@@ -173,7 +173,7 @@ const AuthContextComp = (props: any) => {
         const loggedInUser = localStorage.getItem("user");
         if (loggedInUser) {
             const foundUser = JSON.parse(loggedInUser);
-            const updatedUser = allUsers.find(user => user.email === foundUser.email);
+            const updatedUser = allUsers.find(user => user.email === foundUser.email && user.type === foundUser.type);
             if (updatedUser) {
                 localStorage.setItem("user", JSON.stringify(updatedUser))
                 setLoggedInUserData(updatedUser);
@@ -250,6 +250,9 @@ const AuthContextComp = (props: any) => {
         // }
     }
     const handleFavorites = (id: string) => {
+        if (!loggedIn) {
+            return alert("You have to be logged in")
+        }
         let currFavorites = favorites;
         if (currFavorites.includes(id)) {
             currFavorites.splice(currFavorites.indexOf(id), 1)
@@ -332,7 +335,7 @@ const AuthContextComp = (props: any) => {
 
             setShow(false)
             // window.location.reload()
-            return <Redirect to="/home" />
+            history.replace("/")
         } else {
             data.message ? setFormError(data.message) : setFormError(data.status);
             setTimeout(() => setFormError(""), 2000)
@@ -354,6 +357,7 @@ const AuthContextComp = (props: any) => {
             setLoggedInUserData(data.data)
             localStorage.setItem("user", JSON.stringify(data.data));
             setShow(false);
+            history.replace("/host/listroom")
         }
         else {
             data.message ? setFormError(data.message) : setFormError(data.status);
@@ -379,7 +383,7 @@ const AuthContextComp = (props: any) => {
         localStorage.removeItem("user");
         setLoggedIn(false);
         // props.history.push("/")
-        window.location.reload()
+        history.replace("/")
     }
     const validateSignup = async (body: { favorites: string[]; type: any; email: string; password: string; firstName: string; lastName: string; phone: string; }) => {
         setLoading(true)

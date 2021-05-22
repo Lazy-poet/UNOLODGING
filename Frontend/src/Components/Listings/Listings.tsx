@@ -3,7 +3,8 @@ import AuthContext from '../../store/AuthContext';
 import { RoomData } from '../../store/AuthContext'
 import ListItem from "../RoomsList/ListItem";
 import styles from "../RoomsList/RoomsList.module.css";
-import { Button } from "react-bootstrap"
+import { Button } from "react-bootstrap";
+import axios from "axios"
 interface Props {
 
 }
@@ -17,13 +18,21 @@ const Listings = (props: Props) => {
         setListings(list)
     }, [ctx.roomsData, ctx.userData.email]);
 
+    const deleteRoom = async (id) => {
+        try {
+            const res = await axios.delete(`https://fierce-plains-40745.herokuapp.com/api/delete/${id}`);
+            return res.data.status
+        } catch (e) {
+            console.log(e)
+        }
+    }
     return (
         <div className={styles.Wrapper}>
-            <h3 style={{ "fontWeight": 700, "padding": "20px 0" }}>Your Favorites</h3>
+            <h3 style={{ "fontWeight": 700, "padding": "20px 0" }}>Your Listings</h3>
             {listings.length === 0 ? <>
                 <h4 style={{ "textAlign": "center" }}>A list of apartments you have hosted will appear here. List is currently empty</h4>
                 <Button>Start Hosting</Button>
-            </> : listings.map(room => room && <ListItem favClick={ctx.handleFavorites} click={ctx.handleRoomClick} favorites={ctx.favorites} room={room} />)}
+            </> : listings.map(room => room && <ListItem deleteHandler={deleteRoom} delete={true} favClick={ctx.handleFavorites} click={ctx.handleRoomClick} favorites={ctx.favorites} room={room} />)}
         </div>
     )
 }

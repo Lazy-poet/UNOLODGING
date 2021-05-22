@@ -40,6 +40,12 @@ const RoomDetails = (props: Props) => {
     }
 
     const handleSubmit = async (e) => {
+
+        if (!ctx.loggedIn) {
+            // setShow(true);
+            setResponse("You have to be logged in!")
+            return;
+        }
         e.preventDefault();
         const body = {
             name: `${firstName} ${lastName}`,

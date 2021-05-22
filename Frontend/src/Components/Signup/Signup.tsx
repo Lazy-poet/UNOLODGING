@@ -30,12 +30,12 @@ const Signup = (props: Props) => {
         <>
             <Form encType="multipart/form-data">
                 <Form.Row>
-                    <Form.Group as={Col} controlId="formGridEmail">
+                    <Form.Group as={Col} controlId="formGridName">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control type="text" value={ctx.data.firstName} onChange={ctx.handleFirstNameInput} />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridPassword">
+                    <Form.Group as={Col} controlId="formGridLastName">
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control type="text" value={ctx.data.lastName} onChange={ctx.handleLastNameInput} />
                     </Form.Group>
