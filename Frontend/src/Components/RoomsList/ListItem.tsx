@@ -28,7 +28,6 @@ const RoomList = (props: Props) => {
 
     const deleteRoom = async (id) => {
         if (props.deleteHandler) {
-
             let res = await props.deleteHandler(id);
             if (res === "Successful") {
                 prompt("room deleted successfully");

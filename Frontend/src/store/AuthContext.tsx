@@ -141,7 +141,11 @@ const AuthContextComp = (props: any) => {
     const guestBecomeHost = async () => {
         const res = await updateUser(loggedInUserData.email, "guest", { type: "host" });
         console.log(res, "I became a user")
-        return res.status
+        const updUser = {
+            ...loggedInUserData, type: "host"
+        }
+        localStorage.setItem("user", JSON.stringify(updUser))
+        return res.status;
     }
 
     // const fetchBookings = async () => {
@@ -357,7 +361,7 @@ const AuthContextComp = (props: any) => {
             setLoggedInUserData(data.data)
             localStorage.setItem("user", JSON.stringify(data.data));
             setShow(false);
-           if(userType === "host") history.replace("/host/listroom")
+            if (userType === "host") history.replace("/host/listroom")
         }
         else {
             data.message ? setFormError(data.message) : setFormError(data.status);

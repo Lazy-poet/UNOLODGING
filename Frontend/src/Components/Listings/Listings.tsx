@@ -20,11 +20,12 @@ const Listings = (props: Props) => {
     }, [ctx.roomsData, ctx.userData.email]);
     const history = useHistory();
     const deleteRoom = async (id) => {
+        console.log(id)
         try {
-            const res = await axios.delete(`https://fierce-plains-40745.herokuapp.com/api/delete/${id}`);
+            const res = await axios.delete(`https://fierce-plains-40745.herokuapp.com/api/delete/${id}`, { data: id });
             return res.data.status
         } catch (e) {
-            console.log(e)
+            console.log(e.message)
         }
     }
     return (
