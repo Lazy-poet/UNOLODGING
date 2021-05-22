@@ -357,7 +357,7 @@ const AuthContextComp = (props: any) => {
             setLoggedInUserData(data.data)
             localStorage.setItem("user", JSON.stringify(data.data));
             setShow(false);
-            history.replace("/host/listroom")
+           if(userType === "host") history.replace("/host/listroom")
         }
         else {
             data.message ? setFormError(data.message) : setFormError(data.status);
