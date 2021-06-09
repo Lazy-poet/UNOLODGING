@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import SearchBar from "../SearchBar/SearchBar";
 import styles from './Header.module.css';
 import AuthContext from '../../store/AuthContext'
@@ -21,7 +21,6 @@ const Header = (props: Props) => {
     window.addEventListener("scroll", toggleNav);
 
 
-    // const signedIn = false
     return (
         <nav className={scroll || ctx.route !== "/home" ? [styles.Header, styles.Scroll].join(" ") : [styles.Header, styles.Top].join(" ")}>
             <NavLink to="/home" className={styles.Brand}>

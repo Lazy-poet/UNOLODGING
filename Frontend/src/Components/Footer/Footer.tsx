@@ -13,8 +13,6 @@ const Footer = (props: Props) => {
     return (
         <div className={styles.Wrapper}>
             <div className={styles.Line}></div>
-            {/* <img src={logo} alt="" /> */}
-            {/* <h2>UNOLODGING</h2> */}
             <div className={styles.Footer}>
                 <div className={styles.Section}>
                     <h2>JOIN</h2>
@@ -50,7 +48,6 @@ const Footer = (props: Props) => {
                     <img src={instagram} alt="" />
                     <img src={twitter} alt="" />
                     <img src={linkedin} alt="" />
-                    {/* <img src={youtube} alt="" /> */}
                 </div>
             </footer>
         </div>

@@ -20,7 +20,6 @@ const RoomDetails = (props: Props) => {
     const ctx = useContext(AuthContext);
 
     const [data, setData] = useState({} as RoomData);
-    // const [loading, setLoading]
     const [state, setState] = useState(false);
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -51,7 +50,8 @@ const RoomDetails = (props: Props) => {
             name: `${firstName} ${lastName}`,
             phone,
             hostid: data.hostid,
-            roomId: data.roomId
+            roomId: data.roomId,
+            userEmail: ctx.userData.email
         }
         const res = await ctx.submitBooking(body);
         if (res && res.status === "Successful") setShowModal(true);
